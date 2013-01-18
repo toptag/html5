@@ -1,1 +1,14 @@
-This file was created by JetBrains WebStorm 5.0.4 for binding GitHub repository
+Html5 portion of the crossplatform application. All changes shoulld be carried out in this project.
+
+The project contains an ant build task which builds the project and copies it to the appropriate project. 
+Currently only the android project has been implemented.
+
+It is assumed that you have previously checked out the android project to the same directory as the html5 project.
+basedir/html5
+basedir/android
+
+Also the sencha command tool is required it can be found here, http://www.sencha.com/products/sencha-cmd/download
+
+run > sencha ant build-android
+
+this builds and copies the files to the android project.
