@@ -1,4 +1,4 @@
-Html5 portion of the crossplatform application. All changes shoulld be carried out in this project.
+Html5 portion of the crossplatform application. All changes should be carried out in this project.
 
 The project contains an ant build task which builds the project and copies it to the appropriate project. 
 Currently only the android project has been implemented.
