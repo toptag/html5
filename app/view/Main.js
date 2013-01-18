@@ -7,6 +7,10 @@ Ext.define('TopTag.view.Main', {
     config: {
         tabBarPosition: 'bottom',
 
+        navigationBar: {
+            items: [{xtype: 'deletebutton'}]
+        },
+
         items: [
             {
                 title: 'Tag List',
@@ -15,17 +19,6 @@ Ext.define('TopTag.view.Main', {
         ]
     },
     initialize: function () {
-        var Tag = TopTag.model.Tag;
-        [571954831, 670518882, 489274062, 625622808, 698937859, 144223990, 260773154, 123456789].forEach(function (tag) {
-            Tag.loadTag(tag, function (err, record) {
-                if (err) {
-                    console.warn(err);
-                } else {
-                    console.log('loaded tag %s', record.get('tagid'));
-                }
-            });
-        });
-
         this.callParent(arguments);
     }
 });

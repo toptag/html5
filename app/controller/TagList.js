@@ -4,26 +4,47 @@ Ext.define('TopTag.controller.TagList', {
     config: {
         refs: {
             taglist: 'taglist',
-            main: 'main'
+            main: 'main',
+            deleteButton: 'main deletebutton'
         },
         control: {
             taglist: {
                 itemtap: 'taglistItemTapped'
+            },
+            main: {
+                back: 'backButtonTapped'
             }
         }
     },
     
     taglistItemTapped: function (list, index, target, record, e, eOpts) {
-        console.log(record);
+
+        /**
+         * Add a button to the navigation bar to allow deletion of the record.
+         */
+        this.getDeleteButton().show();
+
+
+        /**
+         * Add the appropriate detail view to the main navigation view.
+         */
         this.getMain().push(Ext.merge({
             xtype: 'tagdetail'
         }, record.data, {
             titleBar: {
                 items: [{
-                    xtype: 'button',
-                    text: 'delete'
+                    xtype: 'deletebutton'
                 }]
             }
         }));
+    },
+
+    backButtonTapped: function (mainNavigationView, eOpts) {
+        console.log('back back back!');
+
+        /**
+         * Remove the delete button it is not necesary or relevant in the tag list view.
+         */
+        this.getDeleteButton().hide();
     }
 });

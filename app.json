@@ -36,12 +36,6 @@
      */
     "js": [
         {
-            "path": "cordova-2.3.0.js"
-        },
-        {
-            "path": "plugins/EmailComposer.js"
-        },
-        {
             "path": "touch/sencha-touch.js"
         },
         {

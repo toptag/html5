@@ -16,7 +16,7 @@ Ext.application({
         'Ext.MessageBox'
     ],
 
-    views: ['Main', 'TagList', 'TagDetail'],
+    views: ['Main', 'TagList', 'TagDetail', 'DeleteButton'],
 
     stores: ['Tags'],
 
@@ -41,6 +41,19 @@ Ext.application({
     launch: function() {
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
+
+        // Load some tags to start with.
+        var Tag = TopTag.model.Tag;
+        var tagsToLoad = [571954831, 670518882, 489274062, 625622808, 698937859, 144223990, 260773154, 123456789];
+        tagsToLoad.forEach(function (tag) {
+            Tag.loadTag(tag, function (err, record) {
+                if (err) {
+                    console.warn(err);
+                } else {
+                    console.log('loaded tag %s', record.get('tagid'));
+                }
+            });
+        });
 
         // Initialize the main view
         Ext.Viewport.add(Ext.create('TopTag.view.Main'));

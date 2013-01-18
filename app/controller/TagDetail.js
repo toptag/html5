@@ -3,11 +3,17 @@ Ext.define('TopTag.controller.TagDetail', {
     
     config: {
         refs: {
-            tagDetail: 'tagdetail dataview'
+            channelList: 'tagdetail dataview',
+            mainDelete: 'main deletebutton',
+            tagDetail: 'main tagdetail'
+
         },
         control: {
-            tagDetail: {
+            channelList: {
                 itemtap: 'channelTapped'
+            },
+            mainDelete: {
+                tap: 'deleteTag'
             }
         }
     },
@@ -31,5 +37,18 @@ Ext.define('TopTag.controller.TagDetail', {
             }
 
         });
+    },
+
+    deleteTag: function () {
+        var that = this;
+        Ext.Msg.confirm('Delete Tag Page', 'Do You Wish To Delete', function (buttonId, value, opt) {
+            if (buttonId ===  'ok' || buttonId === 'yes') {
+                var tagId = that.getTagDetail().getTagid();
+                var tagStore = Ext.getStore('tagStore');
+                var tagIndex = tagStore.find('tagid', tagId);
+                tagStore.removeAt(tagIndex);
+            }
+        });
+
     }
 });
