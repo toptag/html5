@@ -3,6 +3,8 @@
     <import file="${basedir}/.sencha/app/build-impl.xml"/>
 
     <property name="android.www.dir" value="${app.dir}/../android/assets/www"/>
+    <property name="ios.www.dir" value="${app.dir}/../ios/www"/>
+
     <!--
     The following targets can be provided to inject logic before and/or after key steps
     of the build process:
@@ -34,13 +36,39 @@
             <target name="-before-build"/>
             <target name="-after-build"/>
     -->
-    <target name="build-android" depends="build">
+
+    <target name="clean">
+        <delete dir="build"></delete>
+    </target>
+
+    <target name="copy-android-resources">
+        <echo>Copy android resources.</echo>
+        <delete file="cordova-2.3.0.js"></delete>
+        <copy file="cordova.android.js" tofile="cordova-2.3.0.js" overwrite="true"/>
+    </target>
+    <target name="build-android" depends="copy-android-resources, build">
         <echo>Build Android</echo>
         <echo>${app.dir}</echo>
         <echo>${android.www.dir}</echo>
         <echo>${build.dir}/production</echo>
         <delete dir="${android.www.dir}"></delete>
         <copy todir="${android.www.dir}">
+            <fileset dir="${build.dir}/production"/>
+        </copy>
+    </target>
+
+    <target name="copy-ios-resources">
+        <echo>Copy ios resources</echo>
+        <delete file="cordova-2.3.0.js"></delete>
+        <copy file="cordova.ios.js" tofile="cordova-2.3.0.js" overwrite="true"/>
+    </target>
+    <target name="build-ios" depends="copy-ios-resources, build">
+        <echo>Build ios</echo>
+        <echo>${app.dir}</echo>
+        <echo>${android.www.dir}</echo>
+        <echo>${build.dir}/production</echo>
+        <delete dir="${ios.www.dir}"></delete>
+        <copy todir="${ios.www.dir}">
             <fileset dir="${build.dir}/production"/>
         </copy>
     </target>

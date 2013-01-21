@@ -19,12 +19,14 @@ Ext.define('TopTag.controller.TagDetail', {
     },
 
     channelTapped: function (list, index, target, record, e, eOpts) {
-        console.log('You tapped a channel %d', index);
-        var tagdetail = list.up('tagdetail');
-        var channel = tagdetail.getChannels()[index];
-        console.log(channel);
-        var url = 'http://uk.toptag.com/EN/' + tagdetail.getTagid() + '/' + channel.N + '.json';
-        console.log('url: %s', url);
+        var tagdetail = list.up('tagdetail'),
+            channel = tagdetail.getChannels()[index],
+            url = 'http://uk.toptag.com/EN/' + tagdetail.getTagid() + '/' + channel.N + '.json',
+            tagDetail = this.getTagDetail();
+        tagDetail.setMasked({
+            xtype: 'loadmask',
+            indicator: true
+        });
         Ext.Ajax.request({
             url: url,
             success: function (response) {
@@ -34,6 +36,9 @@ Ext.define('TopTag.controller.TagDetail', {
             },
             failure: function () {
                 console.log('Nope that didnt work');
+            },
+            callback: function () {
+                tagDetail.setMasked(false);
             }
 
         });
