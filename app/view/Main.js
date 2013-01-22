@@ -7,6 +7,8 @@ Ext.define('TopTag.view.Main', {
     config: {
         tabBarPosition: 'bottom',
 
+        showAnimation: {type: 'fade'},
+
         navigationBar: {
             items: [{xtype: 'deletebutton'}]
         },

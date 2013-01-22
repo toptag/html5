@@ -4,14 +4,15 @@ $dark: #2d2d2d;
 
 $page-bg-color: $dark;
 $base-color: $dark;
-$base-gradient: 'glossy';
+$base-gradient: 'flat';
 
-$toolbar-gradient: 'glossy';
+$toolbar-gradient: 'flat';
 $toolbar-base-color: $dark;
 
 $list-color: #FFFFFF;
 $list-bg-color: $dark;
-$list-active-color: $dark;
+$list-active-color: lighten($dark, 10);
+$list-active-gradient: 'flat';
 
 // You may remove any of the following modules that you
 // do not use in order to create a smaller css file.
@@ -33,7 +34,6 @@ $dottybackground: url(../images/bg/dotgrid.png);
 
 // Your custom code goes here...
 .tag-list {
-  background: $dottybackground, $dark;
   color: #FFFFFF;
   .list-image {
     float: left;
