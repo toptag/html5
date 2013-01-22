@@ -17,8 +17,5 @@ Ext.define('TopTag.view.Main', {
                 xtype: 'taglist'
             }
         ]
-    },
-    initialize: function () {
-        this.callParent(arguments);
     }
 });

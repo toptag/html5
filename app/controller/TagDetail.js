@@ -35,7 +35,6 @@ Ext.define('TopTag.controller.TagDetail', {
                 window.open(link, '_blank', 'location=yes');
             },
             failure: function () {
-                console.log('Nope that didnt work');
             },
             callback: function () {
                 tagDetail.setMasked(false);

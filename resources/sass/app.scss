@@ -48,7 +48,7 @@ $dottybackground: url(../images/bg/dotgrid.png);
   }
   .x-list-item {
     background: $dark;
-    @include background-gradient($dark, 'matte');
+    //@include background-gradient($dark, 'matte');
   }
 }
 

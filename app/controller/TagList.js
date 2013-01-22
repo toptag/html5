@@ -1,3 +1,6 @@
+/**
+ * Controller for the tag list.
+ */
 Ext.define('TopTag.controller.TagList', {
     extend: 'Ext.app.Controller',
     
@@ -40,9 +43,7 @@ Ext.define('TopTag.controller.TagList', {
     },
 
     backButtonTapped: function (mainNavigationView, eOpts) {
-        console.log('back back back!');
-
-        /**
+         /**
          * Remove the delete button it is not necesary or relevant in the tag list view.
          */
         this.getDeleteButton().hide();

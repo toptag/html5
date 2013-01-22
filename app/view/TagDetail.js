@@ -58,7 +58,6 @@ Ext.define('TopTag.view.TagDetail', {
 
     initialize: function () {
         var tagId = this.getTagid();
-        console.log('In initalze detail. %s', tagId);
         this.down('dataview').setData(this.getChannels());
         var backgroundUrl = 'http://images.toptag.com/tags/' + tagId + 'B2.jpg';
         this.down('image').setSrc(backgroundUrl);
